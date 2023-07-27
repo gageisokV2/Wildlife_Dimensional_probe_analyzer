@@ -23,6 +23,7 @@ class plot_manager:
         self.alpha = 100
         self.shell_actor = None
         self.volume_actor = None
+        self.file_name = None
 
 
     def generate_random_points(self, n_points):
@@ -72,8 +73,13 @@ class plot_manager:
             self.set_fullscreen_right, value=False, color_on='white', color_off='black', background_color='gray')  # set right plot full screen
         self.p.add_text('Full Screen',
                         position=(70, 10), color='black', font_size=7)  # add text
+        
+
 
         self.p.subplot(0, 0)  # left plot
+        self.p.add_checkbox_button_widget(self.save_stl, value=False, color_on='gray', color_off='gray', background_color='gray',position=(10,140))  # save as stl
+        self.p.add_text('Save as STL', position = (70,140), color='black', font_size=7)
+
         self.p.add_text('Full Screen',
                         position=(70, 10), color='black', font_size=7)  # add text
         self.p.add_checkbox_button_widget(
@@ -275,6 +281,8 @@ class plot_manager:
     def view_iso(self, flag):
         self.p.view_isometric()
 
+    def save_stl(self, flag):
+        self.shell.save(self.file_name, recompute_normals=True)
 
 def main():
     # run this program after the setup from control.py is completed

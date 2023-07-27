@@ -34,6 +34,8 @@ echo Python files downloaded successfully to %download_path%.
 echo Installing required Python libraries...
 pip install pyvista
 pip install numpy
+pip install tk
+
 
 :: Create a launcher batch file
 set "launcher_path=%download_path%\launch_control.bat"

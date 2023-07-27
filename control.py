@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
@@ -6,14 +7,19 @@ import plotter
 
 file_loaded = False
 file_path = None
+file_name = None
 plot_manager = plotter.plot_manager()
 
 
 def load_file():
     global file_loaded
     global file_path
+    global file_name
+
     file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
     if file_path:
+        file_name = os.path.basename(file_path)
+        file_name = os.path.splitext(file_name)[0] + ".stl"  # Replace .txt with .stl
         filename_label.config(text="File Loaded:\n" +
                               file_path, wraplength=650)
         view_button.configure(state="normal")
@@ -32,6 +38,7 @@ def close_window():
         else:
             load_window.destroy()
             plot_manager.assign_data(results)
+            plot_manager.file_name = file_name
             plot_manager.create_plots()
     else:
         if messagebox.askokcancel("Quit", "No data was loaded. Quit?"):
@@ -84,10 +91,9 @@ if __name__ == '__main__':
     # Generate random points for an example of the program
     n_points = 1000
     plot_manager.generate_random_points(n_points)
-
+    file_name = "test_cube.stl"
+    plot_manager.file_name = file_name
     plot_manager.delaunay_triangulation(100)
-
-    # plot_manager.assign_data(results)
 
     # Create the GUI window
     load_window = tk.Tk()
