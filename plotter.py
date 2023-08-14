@@ -41,6 +41,7 @@ class plot_manager:
 
     def assign_data(self, data):
         self.cloud = pv.PolyData(data)
+        self.cloud = self.cloud.clean()
 
     def delaunay_triangulation(self, alpha):
         global volume_calc
