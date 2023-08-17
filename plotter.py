@@ -116,7 +116,7 @@ class plot_manager:
 
         self.p.remove_actor(self.volume_actor)
         self.volume_actor = self.p.add_text(
-            "Volume: " + str(round(volume_calc/16390, 3)) + " inches cubed", position='upper_left', color='black', font_size=11)
+            "Volume: " + str(round(volume_calc/16390, 3) * 2.54) + " cm cubed", position='upper_left', color='black', font_size=11)
 
         self.p.reset_camera()  # Reset the camera views to fit the new mesh
 
@@ -130,7 +130,7 @@ class plot_manager:
 
         self.p.remove_actor(self.volume_actor)
         self.volume_actor = self.p.add_text(
-            "Volume: " + str(round(volume_calc/16390, 3)) + " inches cubed", position='upper_right', color='black', font_size=11)
+            "Volume: " + str(round(volume_calc/16390, 3)* 2.54) + " cm cubed", position='upper_right', color='black', font_size=11)
 
         # self.p.reset_camera()  # Reset the camera views to fit the new mesh
 
