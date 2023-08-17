@@ -68,7 +68,7 @@ class plot_manager:
                                  0.001, 200], title='Alpha', n_steps=step, interaction_event='always', style="modern")  # alpha slider
         self.p.remove_actor(self.volume_actor)  # change out volume actor
         self.volume_actor = self.p.add_text(
-            "Volume: " + str(round(volume_calc/16390, 3))+" inches cubed", position='upper_left', color='black', font_size=11)  # Add volume text
+            "Volume: " + str(round(volume_calc/16390, 3) * 2.54)+" cm cubed", position='upper_left', color='black', font_size=11)  # Add volume text
 
         self.p.add_checkbox_button_widget(
             self.set_fullscreen_right, value=False, color_on='white', color_off='black', background_color='gray')  # set right plot full screen
